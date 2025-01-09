@@ -1,0 +1,48 @@
+<div class="m-3 p-3 border">
+  <p>PARENT COMPONENT</p>
+  <button class="btn btn-primary m-2" (click)="generateRandomNumber()">
+    change num
+  </button>
+  <button class="btn btn-primary m-2" (click)="generateRandomtext()">
+    change str
+  </button>
+  <p>simple signal based inputs</p>
+  <p>var1 : {{ var1 }}</p>
+  <br />
+  <p>simple signal based inputs with type = number</p>
+  <p>var2 : {{ var2 }}</p>
+  <br />
+  <p>simple signal based inputs with type = number and required</p>
+  <p>var3 : {{ var3 }}</p>
+  <br />
+  <p>simple signal based inputs with alias as signalInput_4 for parent comp</p>
+  <p>var4 : {{ var4 }}</p>
+  <br />
+  <p>
+    simple signal based inputs with transform func input data in child , removes
+    white spaces from both sides
+  </p>
+  <p>var5 : {{ var5 }}</p>
+  <br />
+  <p>for two way binding we can use model signal</p>
+  <p>model1 : {{ model1 }}</p>
+  <br />
+  <p>output from child to parent</p>
+  <p>outputFromChild1 : {{ outputFromChild1 }}</p>
+  <br />
+  <p>output from child to parent alias as 'output_2'</p>
+  <p>outputFromChild2 : {{ outputFromChild2 }}</p>
+  <div class="mt-3 p-3 border">
+    <app-child
+      [signalInput1]="var1"
+      [signalInput2]="var2"
+      [signalInput3]="var3"
+      [signalInput_4]="var4"
+      [signalInput5]="var5"
+      [signalInput5]="var5"
+      [(signalInputModel1)]="model1"
+      (output1)="output1Changed($event)"
+      (output_2)="output2Changed($event)"
+    ></app-child>
+  </div>
+</div>

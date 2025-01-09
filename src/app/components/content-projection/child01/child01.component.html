@@ -1,0 +1,13 @@
+<p>child01 works!</p>
+<!-- class -->
+<ng-content select="#card-id"
+  >by id (default values if not projected)</ng-content
+>
+<!-- id -->
+<ng-content select=".card-class"
+  >by class (default values if not projected)</ng-content
+>
+<!-- tag -->
+<ng-content select="p"></ng-content>
+<!-- rest projected here -->
+<ng-content select="rest"></ng-content>

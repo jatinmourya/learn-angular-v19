@@ -1,0 +1,20 @@
+<p>CHILD COMPONENT</p>
+<!-- <button (click)="generateRandomNumber()">change</button> -->
+<button class="btn btn-primary m-2" (click)="generateRandomNumber()">
+  change num
+</button>
+<button class="btn btn-primary m-2" (click)="generateRandomtext()">
+  change str
+</button>
+<button class="btn btn-primary m-2" (click)="emitOutput()">
+  change output
+</button>
+
+<p>signalInput1 : {{ signalInput1() }}</p>
+<!-- using computed signal depends on change on signalInput1 -->
+<p>label1 : {{ label1() }}</p>
+<p>signalInput2 : {{ signalInput2() }}</p>
+<p>signalInput3 : {{ signalInput3() }}</p>
+<p>signalInput4 : {{ signalInput4() }}</p>
+<p>signalInput5 : {{ signalInput5() }}</p>
+<p>signalInputModel : {{ signalInputModel1() }}</p>
