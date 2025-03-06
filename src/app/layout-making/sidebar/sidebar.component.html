@@ -1,0 +1,47 @@
+<div class="sidebar-header">
+  @if(!sbCollapsed){
+  <img [src]="baseHref + '/logo-dark.png'" alt="logo-md" class="logo-md" />
+  <i class="bi bi-list" (click)="toggleSidebar()"></i>
+  } @if(sbCollapsed){
+  <img [src]="baseHref + '/logo-sm.png'" alt="logo-sm" class="logo-sm" />
+  }
+</div>
+<ul class="sidebar-content">
+  @for(item of sidebarItems;track item.id){
+  <li
+    class="sidebar-item"
+    [class.expanded]="item.expanded"
+    [class.sidebar-collapsed]="sbCollapsed"
+    [class.has-items]="item.children.length"
+  >
+    <div class="sidebar-item-top" (click)="toggleSubitem(item.id)">
+      <i [class]="item.icon"></i>
+      @if(!sbCollapsed){
+      <span class="w-100">
+        {{ item.label }}
+        @if(item.children.length){ @if(item.expanded ){
+        <i class="float-end bi bi-chevron-up"></i>
+        }@else {
+        <i class="float-end bi bi-chevron-down"></i>
+        } }
+      </span>
+      }
+    </div>
+
+    @if(item.expanded){
+    <ul class="sidebar-subitems" [class.float]="sbCollapsed">
+      @if(sbCollapsed){
+      <li class="sidebar-subitem">
+        {{ item.label }}
+      </li>
+      } @if(item.children.length){ @for( subitem of item.children;track
+      subitem.id){
+      <li class="sidebar-subitem">
+        {{ subitem.label }}
+      </li>
+      } }
+    </ul>
+    }
+  </li>
+  }
+</ul>

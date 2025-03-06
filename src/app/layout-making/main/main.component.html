@@ -1,0 +1,12 @@
+<section class="main_document">
+  <section class="sidebar" [class.collapsed]="sbCollapsed">
+    <app-sidebar></app-sidebar>
+  </section>
+  <section class="web-content">
+    <app-navbar></app-navbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 
 @Component({
@@ -34,5 +34,42 @@ export class ParentComponent {
   }
   output2Changed(e: string) {
     this.outputFromChild2 = e;
+  }
+
+  // component lifecycle hooks
+  constructor() {
+    console.log('Constructor: Component instantiated.');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges: Input property changed.', changes);
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit: Component initialized.');
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck: Custom change detection.');
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit: Content projected into the component.');
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked: Content projection checked.');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit: View initialized.');
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked: View checked.');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy: Component about to be destroyed.');
   }
 }

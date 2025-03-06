@@ -1,0 +1,189 @@
+<!-- https://angular.dev/guide/templates/binding -->
+@let variableInTemplate = 'variable In Template';
+<p>binding works!</p>
+<p>this is {{ textInterpolation }}</p>
+<p>this is {{ variableInTemplate }}</p>
+<p>Property Binding</p>
+<p>
+  In Angular, you use property bindings to set values directly to the DOM
+  representation of the element.
+</p>
+<button [disabled]="btnDisabled">Save</button>
+
+<!-- Bind the `value` property on the `MyListbox` component instance. -->
+<!-- <my-listbox [value]="mySelection" /> -->
+
+<!-- Bind the `role` attribute on the `<ul>` element to the component's `listRole` property. -->
+<!-- <ul [attr.role]="listRole"> -->
+
+<!-- Binds a value to the `alt` property of the image element's DOM object. -->
+<img src="profile-photo.jpg" alt="Profile photo of {{ firstName }}" />
+<button attr.aria-label="Save changes to {{ objectType }}">Button</button>
+
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+<!-- 1 -->
+<!-- @Component({
+  template: `
+  <ul [class]="listClasses"> ... </ul>
+  <section [class]="sectionClasses"> ... </section>
+  <button [class]="buttonClasses"> ... </button>
+  `,
+  ...
+})
+export class UserProfile {
+  listClasses = 'full-width outlined';
+  sectionClasses = ['expandable', 'elevated'];
+  buttonClasses = {
+    highlighted: true,
+    embiggened: false,
+  };
+  } -->
+
+<!-- The above example renders the following DOM: -->
+<!-- <ul class="full-width outlined"> ... </ul>
+<section class="expandable elevated"> ... </section>
+<button class="highlighted"> ... </button> -->
+
+<!-- 2 -->
+<!-- @Component({
+  template: `<ul class="list" [class]="listType" [class.expanded]="isExpanded"> ...`,
+    ...
+  })
+  export class Listbox {
+    listType = 'box';
+    isExpanded = true;
+  } -->
+
+<!-- The above example renders the following DOM: -->
+<!-- <ul class="list box expanded"> -->
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+<!-- CLASS BINDING -->
+
+<!-- STYLE Binding -->
+<!-- STYLE Binding -->
+<!-- STYLE Binding -->
+<!-- Set the CSS `display` property based on the `isExpanded` property. -->
+<section [style.display]="true ? 'block' : 'none'"></section>
+
+<!-- Set the CSS `height` property to a pixel value based on the `sectionHeightInPixels` property. -->
+<section [style.height.px]="49"></section>
+
+<!-- @Component({
+  template: `
+    <ul [style]="listStyles"> ... </ul>
+    <section [style]="sectionStyles"> ... </section>
+  `,
+  ...
+})
+export class UserProfile {
+  listStyles = 'display: flex; padding: 8px';
+  sectionStyles = {
+    border: '1px solid black',
+    'font-weight': 'bold',
+  };
+} -->
+
+<!-- The above example renders the following DOM. -->
+<!-- <ul style="display: flex; padding: 8px"> ... </ul>
+<section style="border: 1px solid black; font-weight: bold"> ... </section> -->
+<!-- STYLE Binding -->
+<!-- STYLE Binding -->
+<!-- STYLE Binding -->
+
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/Element#events -->
+
+<!-- 1 -->
+<!-- @Component({
+  template: `
+    <input type="text" (keyup)="updateField()" />
+  `,
+  ...
+})
+export class AppComponent({
+  updateField(): void {
+    console.log('Field is updated!');
+  }
+}) -->
+
+<!-- 2 -->
+<!-- In every template event listener, Angular provides a variable named $event that contains a reference to the event object. -->
+<!-- @Component({
+  template: `
+    <input type="text" (keyup)="updateField($event)" />
+  `,
+  ...
+})
+export class AppComponent {
+  updateField(event: KeyboardEvent): void {
+    console.log(`The user pressed: ${event.key}`);
+  }
+} -->
+
+<!-- 3 -->
+<!-- However, since this is a common scenario, Angular lets you filter the events by specifying a specific key using the period (.) character. By doing so, code can be simplified to:
+@Component({
+  template: `
+    <input type="text" (keyup.enter)="updateField($event)" />
+  `,
+  ...
+})
+export class AppComponent({
+  updateField(event: KeyboardEvent): void {
+    console.log('The user pressed enter in the text field.');
+  }
+}) -->
+<!-- You can also add additional key modifiers: -->
+
+<!-- 4 -->
+<!-- Matches shift and enter 
+<input type="text" (keyup.shift.enter)="updateField($event)" /> -->
+
+<!-- Angular supports the modifiers alt, control, meta, and shift.
+
+You can specify the key or code that you would like to bind to keyboard events. 
+The key and code fields are a native part of the browser keyboard event object. 
+By default, event binding assumes you want to use the Key values for keyboard events.
+
+Angular also allows you to specify Code values for keyboard events by providing a built-in code suffix. -->
+
+<!-- Matches alt and left shift -->
+<!-- <input type="text" (keydown.code.alt.leftshift)="updateField($event)" /> -->
+
+<!-- This can be useful for handling keyboard events consistently across different operating systems. 
+ For example, when using the Alt key on MacOS devices, the key property reports the key based on the character already modified by the Alt key. 
+ This means that a combination like Alt + S reports a key value of 'ß'. The code property, however, corresponds to the physical or virtual button 
+ pressed rather than the character produced. -->
+
+<input type="text" (keydown.code.alt.leftshift)="eventTriggered($event)" />
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!-- EVENT BINDING -->
+<!--  -->
+<!-- TWO WAY BINDING -->
+<!-- TWO WAY BINDING -->
+<!-- TWO WAY BINDING -->
+<!-- @Component({
+  imports: [FormsModule],
+  template: `
+    <main>
+      <h2>Hello {{ firstName }}!</h2>
+      <input type="text" [(ngModel)]="firstName" />
+    </main>
+  `
+})
+export class AppComponent {
+  firstName = 'Ada';
+} -->
+<!-- TWO WAY BINDING -->
+<!-- TWO WAY BINDING -->
+<!-- TWO WAY BINDING -->

@@ -1,4 +1,11 @@
-import { Component, computed, input, model, output } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  model,
+  output,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,10 +14,6 @@ import { Component, computed, input, model, output } from '@angular/core';
   styleUrl: './child.component.scss',
 })
 export class ChildComponent {
-  ngOnInit() {
-    this.emitOutput();
-    console.log(this.generateRandomtext());
-  }
   // input signal cannot be modified in child component
   // The input function accepts a config object as a second parameter that lets you change the way that input works.
   // simple signal based input
@@ -51,5 +54,47 @@ export class ChildComponent {
   }
   generateRandomtext() {
     return Math.random().toString(36).substring(2);
+  }
+
+  // component lifecycle hooks
+
+  constructor() {
+    console.log('Constructor: Component instantiated.');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges: Input property changed.', changes);
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit: Component initialized.');
+    // setTimeout(() => {
+    //   this.emitOutput();
+    // }, 500);
+    // console.log(this.generateRandomtext());
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck: Custom change detection.');
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit: Content projected into the component.');
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked: Content projection checked.');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit: View initialized.');
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked: View checked.');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy: Component about to be destroyed.');
   }
 }

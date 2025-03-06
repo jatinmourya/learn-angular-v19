@@ -1,0 +1,93 @@
+<!--
+
+Built-in Pipes
+
+Angular includes a set of built-in pipes in the @angular/common package:
+
+Name	            Description
+AsyncPipe	        Read the value from a Promise or an RxJS Observable.
+CurrencyPipe	    Transforms a number to a currency string, formatted according to locale rules.
+DatePipe	        Formats a Date value according to locale rules.
+DecimalPipe	        Transforms a number into a string with a decimal point, formatted according to locale rules.
+I18nPluralPipe	    Maps a value to a string that pluralizes the value according to locale rules.
+I18nSelectPipe	    Maps a key to a custom selector that returns a desired value.
+JsonPipe	        Transforms an object to a string representation via JSON.stringify, intended for debugging.
+KeyValuePipe	    Transforms Object or Map into an array of key value pairs.
+LowerCasePipe	    Transforms text to all lower case.
+PercentPipe	        Transforms a number to a percentage string, formatted according to locale rules.
+SlicePipe	        Creates a new Array or String containing a subset (slice) of the elements.
+TitleCasePipe	    Transforms text to title case.
+UpperCasePipe	    Transforms text to all upper case.
+
+-->
+
+<details open>
+  <summary>Date Pipe</summary>
+  <p>Short Date: {{ today | date : "short" }}</p>
+  <p>Full Date: {{ today | date : "fullDate" }}</p>
+  <p>Custom Format: {{ today | date : "dd-MM-yyyy" }}</p>
+  <p>Custom Format: {{ today | date : "dd/MM/yyyy" }}</p>
+  <p>Custom Format: {{ today | date : "yyyy-MM-dd HH:mm:ss" }}</p>
+  <p>Relative Date: {{ today | date : "EEEE, MMMM d, y" }}</p>
+  <p>Time Only: {{ today | date : "hh:mm a" }}</p>
+</details>
+
+<details open>
+  <summary>Decimal Pipe</summary>
+  <p>Default Decimal: {{ 12345.6789 | number }}</p>
+  <p>Two Decimal Places: {{ 12345.6789 | number : "1.2-2" }}</p>
+  <p>Three Decimal Places: {{ 12345.6789 | number : "1.3-3" }}</p>
+  <p>With No Decimal: {{ 12345.6789 | number : "1.0-0" }}</p>
+  <p>Thousand Separator: {{ 1000000 | number : "1.0-0" }}</p>
+</details>
+
+<details open>
+  <summary>Currency Pipe</summary>
+  <p>Default Currency: {{ 5000000.1269 | currency }}</p>
+  <p>USD Currency: {{ 5000000.1269 | currency : "USD" : "symbol" }}</p>
+  <p>EUR Currency: {{ 5000000.1269 | currency : "EUR" : "symbol" }}</p>
+  <p>INR Currency: {{ 5000000.1269 | currency : "INR" : "symbol" }}</p>
+  <p>
+    Without Symbol:
+    {{ 5000000.126933 | currency : "INR" : "symbol-narrow" : "10.2-5" }}
+  </p>
+</details>
+
+<details open>
+  <summary>Json Pipe</summary>
+
+  <pre>{{ object | json }}</pre>
+</details>
+
+<details open>
+  <summary>Key-Value Pipe</summary>
+  <span>
+    <div>Object</div>
+    <div *ngFor="let item of object | keyvalue">
+      {{ item.key }}:{{ item.value }}
+    </div>
+    <div>Map</div>
+    <div *ngFor="let item of map | keyvalue">
+      {{ item.key }}:{{ item.value }}
+    </div>
+    <div>Natural order</div>
+    <div *ngFor="let item of map | keyvalue : null">
+      {{ item.key }}:{{ item.value }}
+    </div>
+  </span>
+</details>
+
+<details open>
+  <summary>Slice Pipe</summary>
+
+  <p>{{ "Angular Pipes" | slice : 0 : 7 }}</p>
+  <ul>
+    <li *ngFor="let item of items | slice : 1 : 4">{{ item }}</li>
+  </ul>
+</details>
+
+<details open>
+  <summary>Custom Pipe</summary>
+
+  <p>{{ "Angular " | customPipe }}</p>
+</details>

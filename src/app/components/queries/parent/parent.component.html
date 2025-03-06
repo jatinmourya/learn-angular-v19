@@ -1,0 +1,23 @@
+Queries Parent
+<p #elementRef>Template Ref Paragraph tag <strong>Bold Txt</strong></p>
+<p #elementRef>Template Ref Paragraph tag <strong>Bold Txt</strong></p>
+<p #elementRef>Template Ref Paragraph tag <strong>Bold Txt</strong></p>
+<p #elementRef>Template Ref Paragraph tag <strong>Bold Txt</strong></p>
+<div class="border m-2 p-2">
+  parent <br />
+  <button (click)="incrementChildCounter()" class="btn btn-primary">
+    Increment Child Counter
+  </button>
+  &nbsp;
+  <button (click)="decrementChildCounter()" class="btn btn-primary">
+    Decrement Child Counter
+  </button>
+  <div class="border m-2 p-2">
+    <app-child></app-child>
+  </div>
+</div>
+
+<app-child></app-child>
+<app-child></app-child>
+<app-child></app-child>
+<app-child></app-child>

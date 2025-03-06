@@ -1,0 +1,41 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.main_document {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .sidebar {
+    flex-grow: 0;
+    border-right: 1px solid lightgray;
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .sidebar.collapsed {
+    width: fit-content;
+    min-width: fit-content;
+  }
+
+  .web-content {
+    overflow: auto;
+    flex-grow: 1;
+    position: relative;
+    .content {
+      padding: 0.65rem 1rem;
+      height: 100%;
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  // custom scroll bar
+  .web-content::-webkit-scrollbar {
+    border-left: 1px solid lightgray;
+  }
+}
