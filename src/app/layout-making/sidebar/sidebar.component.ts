@@ -19,30 +19,7 @@ export class SidebarComponent {
 
   constructor(private elementRef: ElementRef) {
     this.sidebarItems = sidebarItems;
-    this.serv.sidebarCollapsed.subscribe((res: any) => {
-      this.sbCollapsed = res;
-    });
-
-    this.serv.sidebarFloating.subscribe((res: any) => {
-      this.sbFloating = res;
-    });
-
-    this.serv.sidebarFloatingExpanded.subscribe((res: any) => {
-      this.sbFloatingExpanded = res;
-    });
   }
-
-  sbCollapsed: boolean = Boolean(
-    localStorage.getItem('sidebar-collapsed') == 'true' ? true : false
-  );
-
-  sbFloating: boolean = Boolean(
-    localStorage.getItem('sidebar-floating') == 'true' ? true : false
-  );
-
-  sbFloatingExpanded: boolean = Boolean(
-    localStorage.getItem('sidebar-floating-expanded') == 'true' ? true : false
-  );
 
   toggleSubitem(id: number) {
     let result: any = sidebarItems.find((item) => item.id === id);
@@ -54,11 +31,12 @@ export class SidebarComponent {
   }
 
   toggleSidebar() {
-    if (this.sbFloating) {
-      this.serv.changeSidebarFloatingExpanded(!this.sbFloatingExpanded);
+    if (this.serv.sbFloating) {
+      this.serv.changeSidebarFloatingExpanded(!this.serv.sbFloatingExpanded);
     } else {
-      this.serv.changeSidebarCollapsed(!this.sbCollapsed);
+      this.serv.changeSidebarCollapsed(!this.serv.sbCollapsed);
     }
+    this.serv.adjustPaddingOfWebContent();
     // if (this.sbFloating) {
     //   if (this.sbFloatingExpanded) {
     //     setTimeout(() => {
@@ -97,7 +75,7 @@ export class SidebarComponent {
 
       if (!clickedElement.classList.contains('sidebar-menu-icon')) {
         this.serv.changeSidebarFloatingExpanded(false);
-        if (this.sbCollapsed) {
+        if (this.serv.sbCollapsed) {
           sidebarItems.forEach((item) => {
             item.expanded = false;
           });
@@ -108,6 +86,9 @@ export class SidebarComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
+    // console.log(event);
+    // console.log(this.elementRef.nativeElement.width);
+
     this.sw = window.innerWidth;
     // console.log('Window resized! New width:', this.sw);
     if (this.sw < 992) {
@@ -118,5 +99,6 @@ export class SidebarComponent {
       this.serv.changeSidebarFloating(false);
       this.serv.changeSidebarFloatingExpanded(false);
     }
+    this.serv.adjustPaddingOfWebContent();
   }
 }

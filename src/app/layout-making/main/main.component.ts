@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -18,28 +18,5 @@ export class MainComponent {
       this.serv.changeSidebarFloating(false);
       this.serv.changeSidebarFloatingExpanded(false);
     }
-    this.serv.sidebarCollapsed.subscribe((res: any) => {
-      this.sbCollapsed = res;
-    });
-
-    this.serv.sidebarFloating.subscribe((res: any) => {
-      this.sbFloating = res;
-    });
-
-    this.serv.sidebarFloatingExpanded.subscribe((res: any) => {
-      this.sbFloatingExpanded = res;
-    });
   }
-
-  sbCollapsed: boolean = Boolean(
-    localStorage.getItem('sidebar-collapsed') == 'true' ? true : false
-  );
-
-  sbFloating: boolean = Boolean(
-    localStorage.getItem('sidebar-floating') == 'true' ? true : false
-  );
-
-  sbFloatingExpanded: boolean = Boolean(
-    localStorage.getItem('sidebar-floating-expanded') == 'true' ? true : false
-  );
 }

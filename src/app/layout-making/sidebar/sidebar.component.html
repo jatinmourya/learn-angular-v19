@@ -1,8 +1,8 @@
 <div class="sidebar-header">
-  @if(!sbCollapsed){
+  @if(!serv.sbCollapsed){
   <img [src]="baseHref + '/logo-dark.png'" alt="logo-md" class="logo-md" />
   <i class="sidebar-menu-icon bi bi-list" (click)="toggleSidebar()"></i>
-  } @if(sbCollapsed){
+  } @if(serv.sbCollapsed){
   <img [src]="baseHref + '/logo-sm.png'" alt="logo-sm" class="logo-sm" />
   }
 </div>
@@ -11,12 +11,12 @@
   <li
     class="sidebar-item"
     [class.expanded]="item.expanded"
-    [class.sidebar-collapsed]="sbCollapsed"
+    [class.sidebar-collapsed]="serv.sbCollapsed"
     [class.has-items]="item.children.length"
   >
     <div class="sidebar-item-top" (click)="toggleSubitem(item.id)">
       <i class="sidebar-item-icon" [class]="item.icon"></i>
-      @if(!sbCollapsed){
+      @if(!serv.sbCollapsed){
       <span class="w-100">
         {{ item.label }}
         @if(item.children.length){ @if(item.expanded ){
@@ -29,8 +29,8 @@
     </div>
 
     @if(item.expanded){
-    <ul class="sidebar-subitems" [class.float]="sbCollapsed">
-      @if(sbCollapsed){
+    <ul class="sidebar-subitems" [class.float]="serv.sbCollapsed">
+      @if(serv.sbCollapsed){
       <li class="sidebar-subitem">
         {{ item.label }}
       </li>

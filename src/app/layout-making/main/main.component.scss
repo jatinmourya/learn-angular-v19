@@ -20,6 +20,10 @@
     background: #fff;
     transition: 0.5s !important;
     z-index: 99;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .sidebar.collapsed {
@@ -29,7 +33,6 @@
 
   .sidebar.sidebar-floating {
     transition: 1.1s !important;
-    height: 100%;
     position: fixed;
     top: 0;
     left: -100%;

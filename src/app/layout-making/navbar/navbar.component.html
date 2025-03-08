@@ -1,7 +1,7 @@
 <nav class="nav">
-  @if(sbFloating){
+  @if(serv.sbFloating){
   <img [src]="'/logo-sm.png'" alt="logo-sm" class="logo-sm" />
-  } @if(sbCollapsed || sbFloating){
+  } @if(serv.sbCollapsed || serv.sbFloating){
   <i class="sidebar-menu-icon bi bi-list" (click)="toggleSidebar()"></i>
   }
   <i class="profile-icon bi bi-person"></i>
