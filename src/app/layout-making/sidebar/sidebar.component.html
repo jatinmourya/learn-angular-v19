@@ -1,7 +1,7 @@
 <div class="sidebar-header">
   @if(!sbCollapsed){
   <img [src]="baseHref + '/logo-dark.png'" alt="logo-md" class="logo-md" />
-  <i class="bi bi-list" (click)="toggleSidebar()"></i>
+  <i class="sidebar-menu-icon bi bi-list" (click)="toggleSidebar()"></i>
   } @if(sbCollapsed){
   <img [src]="baseHref + '/logo-sm.png'" alt="logo-sm" class="logo-sm" />
   }
@@ -15,7 +15,7 @@
     [class.has-items]="item.children.length"
   >
     <div class="sidebar-item-top" (click)="toggleSubitem(item.id)">
-      <i [class]="item.icon"></i>
+      <i class="sidebar-item-icon" [class]="item.icon"></i>
       @if(!sbCollapsed){
       <span class="w-100">
         {{ item.label }}

@@ -1,6 +1,8 @@
 <nav class="nav">
-  @if(sbCollapsed){
-  <i class="bi bi-list" (click)="toggleSidebar()"></i>
+  @if(sbFloating){
+  <img [src]="'/logo-sm.png'" alt="logo-sm" class="logo-sm" />
+  } @if(sbCollapsed || sbFloating){
+  <i class="sidebar-menu-icon bi bi-list" (click)="toggleSidebar()"></i>
   }
-  <i class="bi bi-person"></i>
+  <i class="profile-icon bi bi-person"></i>
 </nav>

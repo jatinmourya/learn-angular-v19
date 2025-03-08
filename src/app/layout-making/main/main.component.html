@@ -1,5 +1,10 @@
 <section class="main_document">
-  <section class="sidebar" [class.collapsed]="sbCollapsed">
+  <section
+    class="sidebar"
+    [class.collapsed]="sbCollapsed"
+    [class.sidebar-floating]="sbFloating"
+    [class.sidebar-floating-expanded]="sbFloatingExpanded"
+  >
     <app-sidebar></app-sidebar>
   </section>
   <section class="web-content">

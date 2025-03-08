@@ -6,8 +6,9 @@
 }
 body {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
+  // overflow: hidden;
 }
 .bi {
   display: flex;
@@ -28,4 +29,15 @@ body {
   background-color: gray;
   transition: background-color 0s 0.2s;
 }
-// custom scroll bar
+
+// // custom scroll bar
+// .sidebar-menu-icon::before {
+//   border-radius: 0.5rem;
+//   padding: 0.3rem;
+//   border: 1px solid transparent;
+// }
+
+// .sidebar-menu-icon:hover::before {
+//   // background-color: lightgray;
+//   border: 1px solid lightgray;
+// }

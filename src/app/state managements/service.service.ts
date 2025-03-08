@@ -7,11 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class ServiceService {
   constructor() {}
 
-  dataSubject = new BehaviorSubject<any>('');
+  dataSubject = new BehaviorSubject<number>(0);
   // public data$ = this.dataSubject.asObservable();
 
-  updateData(newData: any) {
+  updateData(newData: number) {
     this.dataSubject.next(newData);
-    console.log(this.dataSubject);
   }
 }

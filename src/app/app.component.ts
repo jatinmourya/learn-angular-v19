@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// import { RouterOutlet } from '@angular/router';
 import { LayoutMakingModule } from './layout-making/layout-making.module';
 // import { SelectorsComponent } from './components/selectors/selectors.component';
 // import { StylingComponent } from './components/styling/styling.component';
@@ -17,7 +17,7 @@ import { LayoutMakingModule } from './layout-making/layout-making.module';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LayoutMakingModule],
+  imports: [LayoutMakingModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

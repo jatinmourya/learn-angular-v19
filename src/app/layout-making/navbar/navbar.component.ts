@@ -9,16 +9,36 @@ import { ServiceService } from '../service.service';
 })
 export class NavbarComponent {
   toggleSidebar() {
-    this.serv.changeSidebarCollapsed(!this.sbCollapsed);
+    if (this.sbFloating) {
+      this.serv.changeSidebarFloatingExpanded(!this.sbFloatingExpanded);
+    } else {
+      this.serv.changeSidebarCollapsed(!this.sbCollapsed);
+    }
   }
   serv = inject(ServiceService);
   constructor() {
     this.serv.sidebarCollapsed.subscribe((res: any) => {
       this.sbCollapsed = res;
     });
+
+    this.serv.sidebarFloating.subscribe((res: any) => {
+      this.sbFloating = res;
+    });
+
+    this.serv.sidebarFloatingExpanded.subscribe((res: any) => {
+      this.sbFloatingExpanded = res;
+    });
   }
 
   sbCollapsed: boolean = Boolean(
     localStorage.getItem('sidebar-collapsed') == 'true' ? true : false
+  );
+
+  sbFloating: boolean = Boolean(
+    localStorage.getItem('sidebar-floating') == 'true' ? true : false
+  );
+
+  sbFloatingExpanded: boolean = Boolean(
+    localStorage.getItem('sidebar-floating-expanded') == 'true' ? true : false
   );
 }
