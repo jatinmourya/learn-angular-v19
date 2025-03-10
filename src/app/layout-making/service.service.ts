@@ -46,11 +46,13 @@ export class ServiceService {
         // );
         sbWidth = (document.querySelector('.sidebar') as HTMLElement)
           .clientWidth;
+        webContent.style.transition = '.5s';
         webContent.style.paddingLeft = sbWidth + 'px';
       } else {
+        webContent.style.transition = '.5s';
         webContent.style.paddingLeft = sbWidth + 'px';
       }
-    }, 1);
+    }, 0);
   }
 
   sidebarCollapsed = new BehaviorSubject<boolean>(
