@@ -4,5 +4,21 @@
   } @if(serv.sbCollapsed || serv.sbFloating){
   <i class="sidebar-menu-icon bi bi-list" (click)="toggleSidebar()"></i>
   }
-  <i class="profile-icon bi bi-person"></i>
+  <div class="profile-icon-section">
+    <i
+      class="profile-icon bi bi-person"
+      (click)="toggleProfileOptions()"
+      [class.active]="serv.showProfileOptions"
+    >
+    </i
+    >@if(serv.showProfileOptions){
+    <ul class="profile-options">
+      <li class="profile-option"><i class="bi bi-person-gear"></i>Profile</li>
+      <li class="profile-option"><i class="bi bi-gear"></i>Setting</li>
+      <li class="profile-option">
+        <i class="bi bi-box-arrow-right"></i>Logout
+      </li>
+    </ul>
+    }
+  </div>
 </nav>

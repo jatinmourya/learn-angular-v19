@@ -6,6 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ServiceService {
   constructor() {
+    this.navProfileOptions.subscribe((res: any) => {
+      this.showProfileOptions = res;
+    });
+
     this.sidebarCollapsed.subscribe((res: any) => {
       this.sbCollapsed = res;
     });
@@ -20,6 +24,10 @@ export class ServiceService {
 
     this.adjustPaddingOfWebContent();
   }
+
+  showProfileOptions: boolean = Boolean(
+    localStorage.getItem('show-profile-options') == 'true' ? true : false
+  );
 
   sbCollapsed: boolean = Boolean(
     localStorage.getItem('sidebar-collapsed') == 'true' ? true : false
@@ -46,13 +54,20 @@ export class ServiceService {
         // );
         sbWidth = (document.querySelector('.sidebar') as HTMLElement)
           .clientWidth;
-        webContent.style.transition = '.5s';
+        // webContent.style.transition = '.25s';
         webContent.style.paddingLeft = sbWidth + 'px';
       } else {
-        webContent.style.transition = '.5s';
+        // webContent.style.transition = '.25s';
         webContent.style.paddingLeft = sbWidth + 'px';
       }
     }, 0);
+  }
+
+  navProfileOptions = new BehaviorSubject<boolean>(false);
+
+  changeNavProfileOptions(b: boolean) {
+    localStorage.setItem('show-profile-options', String(b));
+    this.navProfileOptions.next(b);
   }
 
   sidebarCollapsed = new BehaviorSubject<boolean>(

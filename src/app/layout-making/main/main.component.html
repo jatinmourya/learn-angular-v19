@@ -1,4 +1,7 @@
 <section class="main_document">
+  @if(serv.sbFloating && serv.sbFloatingExpanded ){
+  <section class="bg-sidebar"></section>
+  }
   <section
     class="sidebar"
     [class.collapsed]="serv.sbCollapsed"

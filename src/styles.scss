@@ -4,15 +4,20 @@
   margin: 0;
   box-sizing: border-box;
 }
+html {
+  overflow: hidden;
+}
 body {
+  overflow: auto;
   display: flex;
   height: 100dvh;
   width: 100%;
 }
-.bi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bi,
+.bi::before {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 // custom scroll bar
